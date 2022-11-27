@@ -1,0 +1,24 @@
+<%- include('header.ejs') %> 
+    <div class="box" id="heading">
+        <h1> <%= listTitle %></h1>
+    </div>
+    
+    <div class="box">
+        <ul> 
+            <% newListItems.forEach(its => { %>
+                <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%= its._id %>" onChange="this.form.submit()" />
+                    <p><%= its.name %> </p>
+                </div>
+                </form>
+            <% }) %>
+
+             <form class="item" action="/" method="post">
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+                <button type="submit" name="list" value=<%= listTitle %>>+</button>
+            </form>
+
+        </ul>
+    </div>
+<%- include('footer.ejs') %> 
